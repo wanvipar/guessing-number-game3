@@ -1,0 +1,43 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+int Guess(int);
+int round = 1;
+int main()
+{
+	int rannum;
+	srand(time(NULL));
+	rannum = int(1+rand()%10);
+	round = Guess(rannum);
+	cout << "The secret number is " << rannum << endl;
+	cout << "You made " << round << " guesses" << endl;
+	return 0;
+}
+
+int Guess(int rannum)
+{
+	int num;
+	bool check = true;
+	cout << "###Welcome to guessing number game###" << endl;
+	cout << "Secret number has been chosen" << endl;
+	do{
+	cout << "Guess the number (1 to 10) : ";
+	cin >> num;
+	if(rannum == num)
+	{
+		cout << "Congratulations!" << endl;
+		check = false;
+	}
+	else if(rannum < num)
+	{
+		cout << "The secret number is higher" << endl;
+		round += 1;
+	}
+	else if(rannum > num)
+	{
+		cout << "The secret number is lower" << endl;
+		round += 1;
+	}
+	}while(check);
+	return(round);
+}
